@@ -1,21 +1,20 @@
 <?php 
 	
-	class Model_Player extends Orm\Model {
+	class Model_Alliance extends Orm\Model {
 
 		protected static $_properties = array(
 			'id',
-			'player_id', 
-			'name', 
-			'alliance', 
+			'alliance_id',
+			'name',
 			'points',
-			'rank',
 			'towns',
+			'members',
+			'rank',
 			'oda',
-			'odt',
 			'odd',
+			'odt',
 			'world',
 			'market'
-
 		);
 
 		protected static $_has_many = array(
@@ -28,34 +27,28 @@
 			)
 		);
 		protected static $_has_one = array(
-			'alliance' => array(
-				'key_from' => 'alliance',
-				'model_to' => 'Model_Alliance',
-				'key_to' => 'alliance_id',
-				'cascade_save' => true,
-				'cascade_delete' => false
-			), 
 			'oda' => array(
-				'key_from' => 'player_id',
-				'model_to' => 'Model_PlayerOD',
-				'key_to' => 'player_id',
+				'key_from' => 'alliance_id',
+				'model_to' => 'Model_AllianceOD',
+				'key_to' => 'alliance_id',
 				'cascade_save' => true,
 				'cascade_delete' => false
 			),
 			'odd' => array(
-				'key_from' => 'player_id',
-				'model_to' => 'Model_PlayerOD',
-				'key_to' => 'player_id',
+				'key_from' => 'alliance_id',
+				'model_to' => 'Model_AllianceOD',
+				'key_to' => 'alliance_id',
 				'cascade_save' => true,
 				'cascade_delete' => false
 			),
 			'odt' => array(
-				'key_from' => 'player_id',
-				'model_to' => 'Model_PlayerOD',
-				'key_to' => 'player_id',
+				'key_from' => 'alliance_id',
+				'model_to' => 'Model_AllianceOD',
+				'key_to' => 'alliance_id',
 				'cascade_save' => true,
 				'cascade_delete' => false
 			)
+
 		);
 
 	}
