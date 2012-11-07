@@ -1,8 +1,25 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteCond %{SCRIPT_FILENAME} !-d  
+	RewriteCond %{SCRIPT_FILENAME} !-f 
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.js$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.png$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.jpg$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.jpeg$
+	RewriteCond %{REQUEST_FILENAME} !^(.+)\.gif$
 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
 
-    RewriteRule ^(.*)$ index.php/$1 [L]
+	RewriteRule ^([A-Za-z]{2}[0-9]+)/?$ index.php?world=$1
+
+	RewriteRule ^([A-Za-z]+)/?$ index.php?controller=$1
+
+	RewriteRule ^([A-Za-z]+)/([A-Za-z]+)/?$ index.php?controller=$1&view=$2
+	RewriteRule ^([A-Za-z]+)/([A-Za-z]+)/([A-Za-z]+)/?$ index.php?controller=$1&view=$2&data=$3
+
+	RewriteRule ^(player|alliance)/([A-Za-z0-9]+)/?$ index.php?$1=$2 
+
+	RewriteRule ^([A-Za-z]{2}[0-9]+)/([A-Za-z]+)/?$ index.php?world=$1&view=$2 
+	
+	RewriteRule ^([A-Za-z]{2}[0-9]+)/(player|alliance)/([A-Za-z0-9]+)/?$  index.php?world=$1&$2=$3 
+    
 </IfModule>
