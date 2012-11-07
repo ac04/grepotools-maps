@@ -1,0 +1,24 @@
+body {
+	padding-top: 40px;
+}
+
+li.dropdown img.flag {
+	width: 30px;
+	height: 20px;
+}
+li.dropdown ul.dropdown-menu li img.flag {
+	margin: 5px 0px 5px 10px;
+	
+	width: 45px;
+	height: 30px;
+}
+
+div.login-box, div.register-box {
+	margin-top: 25px;
+}
+div.row:first-child {
+	margin-top: 20px;
+}
+div#confirmPassGroup span.help-inline {
+	display: none;
+}
